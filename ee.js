@@ -2,49 +2,7 @@ $(function() {
 
   var request = require('request')
 
-  function addHtml() {
-    var m =
-      '<div id="textDiv">' +
-      '    <input type="text" class="textBox" id="text" value="https://github.com/codemirror/CodeMirror">' +
-      '    <input type="button" class="button" id="button" value="button">' +
-      '</div>' +
-      '<div id="list"></div>';
-    $('body').append(m)
-  }
-
-  function gitName() {
-    return $('#text').val().replace(/https:\/\/github.com\//g, '')
-  }
-
-  function getTree(code) {
-    function vxv(err, resp, html) {
-      var upFolderPath = function(pathh) {
-        if (!pathh.includes("/")) return "top"
-        var upPath = pathh.replace(/\/$/g, '')
-        upPath = upPath.replace(/\/[^\/]*?$/g, '')
-        if (upPath === '') upPath = '/'
-        return upPath
-      }
-      var vg = JSON.parse(html)
-      tree = vg.tree
-      console.log(tree)
-      $.each(tree, function(k, v) {
-        var u = v.path
-        v.zzz = upFolderPath(u)
-        v.name = u.split("/").pop()
-      });
-      outPutTree("top", $('#list'))
-      console.log(treey)
-    }
-
-    request.get({
-      method: 'GET',
-      url: code,
-      headers: {
-        'User-Agent': 'Super Cool Browser' // optional headers
-      }
-    }, vxv);
-  }
+  
 
   function outPutTree(code, targ) {
     cc = []
